@@ -1,0 +1,1 @@
+rm -fr dist && python3 setup.py py2app

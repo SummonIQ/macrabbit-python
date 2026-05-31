@@ -1,0 +1,1 @@
+# Core package for macOS Service Manager 

@@ -1,0 +1,69 @@
+/* Robust dark mode stylesheet for macOS Service Manager */
+QWidget {
+    background-color: #232323;
+    color: #f0f0f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', Arial, sans-serif;
+}
+QGroupBox {
+    background-color: #232323;
+    border: 1px solid #444;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+QGroupBox:title {
+    color: #f0f0f0;
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}
+QPushButton {
+    background-color: #2563eb;
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+}
+QPushButton:disabled {
+    background-color: #444;
+    color: #888;
+}
+QPushButton:hover {
+    background-color: #1749b1;
+}
+QListWidget, QTreeWidget, QTextEdit, QLineEdit {
+    background-color: #181818;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    border-radius: 6px;
+}
+QListWidget::item {
+    padding: 4px;
+}
+QListWidget::item:selected {
+    background: #2563eb;
+    color: #fff;
+    border-radius: 6px;
+}
+QListWidget::item:hover {
+    background-color: #333;
+    border-radius: 6px;
+}
+QScrollBar:vertical, QScrollBar:horizontal {
+    background: #232323;
+    width: 12px;
+    margin: 0px;
+}
+QScrollBar::handle {
+    background: #444;
+    border-radius: 6px;
+}
+QScrollBar::add-line, QScrollBar::sub-line {
+    background: none;
+}
+QLabel {
+    color: #f0f0f0;
+}
+QFrame {
+    background-color: #1b1b1b;
+    border-radius: 8px;
+} 
