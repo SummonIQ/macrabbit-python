@@ -1,3 +1,20 @@
+<!-- SUMMONIQ-OSS-HEADER:START -->
+<div align="center">
+
+  <img src="app_icon.png" alt="Mac Rabbit logo" width="112">
+
+  <h1>Mac Rabbit</h1>
+  <p>A native macOS application for managing system services and optimizing your Mac's performance and privacy.</p>
+
+  <p>
+    <a href="https://github.com/SummonIQ/mac-rabbit"><img alt="Repository" src="https://img.shields.io/badge/github-SummonIQ%2Fmac-rabbit-24292f?logo=github"></a>
+    <a href="https://unlicense.org/"><img alt="License: Unlicense" src="https://img.shields.io/badge/license-Unlicense-blue.svg"></a>
+  </p>
+
+</div>
+
+---
+<!-- SUMMONIQ-OSS-HEADER:END -->
 # macOS Service Manager
 
 A native macOS application for managing system services and optimizing your Mac's performance and privacy.
