@@ -4198,11 +4198,11 @@ class ServiceManagerTUI:
         changes = [(s, i) for c in self.services_data.values() for s, i in c.items() if "pending_status" in i and i["pending_status"] != i["status"]]
 
         if not changes:
-            live.update(Panel(Text("No changes to apply.", justify="center")))
+            live.update(Panel(Text("No changes to apply.", justify="center")), refresh=True)
             time.sleep(1.5)
             return
 
-        live.update(Panel(self.generate_command_table(changes), title="[bold yellow]Confirm Changes"))
+        live.update(Panel(self.generate_command_table(changes), title="[bold yellow]Confirm Changes"), refresh=True)
         self.console.print(Panel(Text("Press 'y' to apply, any other key to cancel.", justify="center")))
         key = self.read_key()
 
@@ -4245,15 +4245,15 @@ class ServiceManagerTUI:
 
             if warnings:
                 warning_text = "\n".join(warnings)
-                live.update(Panel(Text(f"Some services may not have been fully disabled or stopped:\n\n{warning_text}", justify="left", style="yellow"), title="[bold red]Warning"))
+                live.update(Panel(Text(f"Some services may not have been fully disabled or stopped:\n\n{warning_text}", justify="left", style="yellow"), title="[bold red]Warning"), refresh=True)
                 time.sleep(4)
             else:
-                live.update(Panel(Text("✅ Changes applied successfully. Rescanning services...", justify="center"), style="green"))
+                live.update(Panel(Text("✅ Changes applied successfully. Rescanning services...", justify="center"), style="green"), refresh=True)
                 time.sleep(2)
             self.services_data = get_live_services(self.console)
         else:
             for _, info in changes: del info["pending_status"]
-            live.update(Panel(Text("❌ Changes cancelled.", justify="center"), style="red"))
+            live.update(Panel(Text("❌ Changes cancelled.", justify="center"), style="red"), refresh=True)
             time.sleep(1.5)
 
     def generate_command_table(self, changes: List[Tuple[str, Dict]]) -> Table:
@@ -4277,16 +4277,16 @@ class ServiceManagerTUI:
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
         try:
-            with Live(self.draw_layout(), screen=True, transient=True, refresh_per_second=20) as live:
+            with Live(self.draw_layout(), screen=True, transient=True, auto_refresh=False) as live:
                 while not self.exit_app:
                     action = self.handle_input(self.read_key())
                     
                     if action == "apply":
                         live.stop()
                         self.confirm_and_apply(live) # This method now handles the rescan
-                        live.start()
+                        live.start(refresh=True)
                     
-                    live.update(self.draw_layout())
+                    live.update(self.draw_layout(), refresh=True)
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
